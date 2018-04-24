@@ -42,7 +42,7 @@
       nil)
 
 
-    (defun install-repl (&rest args &key wrap-current eof-quits history killring  &allow-other-keys)
+    (defun install-repl (&rest args &key wrap-current eof-quits history killring  dont-ask-to-quit &allow-other-keys)
       (enforce-consistent-state)
       (let ((args (copy-list args)))
 	(dolist (key '(:wrap-current :eof-quits
@@ -69,7 +69,7 @@
 			      args)
 		     (end-of-file (e)
 		       (if eof-quits
-			   (and (fresh-line) (eof-handler "SBCL" #'sb-ext:quit))
+			   (and (fresh-line) (eof-handler "SBCL" #'sb-ext:quit dont-ask-to-quit))
 			   ;; Hackins, I know.
 			   "#.''end-of-file"))))))
 	  (setf sb-int:*repl-prompt-fun* (constantly ""))

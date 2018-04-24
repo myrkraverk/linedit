@@ -85,9 +85,9 @@ open-args passed to `open'."
         (format *terminal-io* "Please type \"y\" for yes or \"n\" for no.~%")
         (finish-output *terminal-io*)))))
 
-(defun eof-handler (lisp-name quit-fn)
+(defun eof-handler (lisp-name quit-fn &optional dont-ask)
   (handler-case
-      (cond ((yes-or-no "Really quit ~A?" lisp-name)
+      (cond ((or dont-ask (yes-or-no "Really quit ~A?" lisp-name))
              (fresh-line)
              (funcall quit-fn))
             (t

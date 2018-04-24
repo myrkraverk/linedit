@@ -25,7 +25,7 @@
 (in-package :linedit-system)
 
 (defsystem :linedit
-  :version "0.17.6"
+  :version "0.17.6.1"
   :description "Readline-style library."
   :licence "MIT"
   :author "Nikodemus Siivola <nikodemus@random-state.net>"

@@ -48,7 +48,7 @@
 	   :initform ""
 	   :initarg :prompt)))
 
-(defmethod initialize-instance :after ((editor editor) &rest initargs &key history killring)
+(defmethod initialize-instance :after ((editor editor) &rest initargs &key history killring dont-ask-to-quit)
   (let ((history (ensure-buffer (or history *history*))))
     (unless *history*
       (setf *history* history))
